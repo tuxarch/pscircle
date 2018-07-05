@@ -1,0 +1,113 @@
+#pragma once
+
+#define VERSION_STR "@version@"
+
+#mesondefine NDEBUG
+
+#mesondefine HAVE_X11
+
+#mesondefine HAVE_SINCOS
+
+#define PSC_PRINT_TIME 0
+
+#define PSC_USE_FLOAT 0
+
+#define PSC_TOPLIST_MAX_ROWS 5
+
+#define PSC_MAX_NAME_LENGHT 20
+
+#define PSC_MAX_PROCS_COUNT 512
+
+#define PSC_NODE_COUNT_TYPE uint_fast16_t
+#define PSC_MEMORY_UNIT_TYPE uint_fast8_t
+#define PSC_PID_TYPE int
+
+#define PSC_MAX_ARGS 100
+#define PSC_HELPLIST_OFFSET 3
+#define PSC_HELPLIST_WIDTH 60
+#define PSC_ARG_DESCRIPTION_BUFSIZE 300
+#define PSC_ARG_KEY_BUFSIZE 100
+#define PSC_LABEL_BUFSIZE 50
+#define PSC_COLOR_BUFSIZE 10
+#define PSC_POINT_BUFSIZE 20
+
+
+
+// Can be changed via command line arguments
+
+#define PSC_STDIN false
+#define PSC_INTERVAL 1
+
+#ifdef HAVE_X11
+#define PSC_OUTPUT 0
+#else
+#define PSC_OUTPUT "pscirlce.png"
+#endif
+
+#define PSC_OUTPUT_DISPLAY 0
+#define PSC_OUTPUT_WIDTH 3200
+#define PSC_OUTPUT_HEIGHT 1800
+
+#define PSC_ROOT_PID 0
+#define PSC_ZERO_ANGLE_PID 2
+#define PSC_ANCHOR_PROC_NAME "kthreadd"
+#define PSC_ANCHOR_PROC_ANGLE 0
+#define PSC_MEMORY_UNIT 1
+#define PSC_MAX_CHILDREN 90
+#define PSC_BACKGROUND_COLOR rgb(42, 42, 42)
+#define PSC_BACKGROUND_IMAGE 0
+
+#define PSC_TREE_FONT_FACE "Sans"
+#define PSC_TREE_FONT_SIZE 20
+#define PSC_TREE_FONT_COLOR rgba(238, 238, 238, 180)
+#define PSC_TREE_SECTOR 0
+#define PSC_TREE_RADIUS_INCREMENT 210
+#define PSC_TREE_SECTOR 0
+#define PSC_TREE_ROTATE false
+#define PSC_TREE_ROTATION 0
+#define PSC_TREE_CENTER {0, 0}
+
+#define PSC_MEM_MIN 200*1024*1024
+#define PSC_MEM_MAX 800*1024*1024
+#define PSC_CPU_MIN 0
+#define PSC_CPU_MAX 15
+
+#define PSC_DOT_RADIUS 6
+#define PSC_DOT_BORDER 2
+#define PSC_DOT_BORDER_COLOR_MIN rgb(61, 91, 99)
+#define PSC_DOT_BORDER_COLOR_MAX rgb(155, 104, 104)
+#define PSC_DOT_BACKGROUND_COLOR_MIN rgb(37, 132, 81)
+#define PSC_DOT_BACKGROUND_COLOR_MAX rgb(193, 42, 42)
+
+#define PSC_LINK_WIDTH 2.5
+#define PSC_LINK_CONVIXITY 0.4
+#define PSC_LINK_COLOR_MIN rgb(61, 91, 99)
+#define PSC_LINK_COLOR_MAX rgb(155, 104, 104)
+
+#define PSC_TOPLISTS_ROW_HEIGHT 30
+#define PSC_TOPLISTS_FONT_SIZE 20
+#define PSC_TOPLISTS_FONT_COLOR rgba(238, 238, 238, 180)
+#define PSC_TOPLISTS_FONT_FACE "Sans"
+#define PSC_TOPLISTS_PID_FONT_COLOR rgb(130, 130, 130)
+#define PSC_TOPLISTS_COLUMN_PADDING 15
+
+#define PSC_TOPLISTS_BAR_WIDTH 60
+#define PSC_TOPLISTS_BAR_HEIGHT 7
+#define PSC_TOPLISTS_BAR_BG rgb(68, 68, 68)
+#define PSC_TOPLISTS_BAR_COLOR rgb(221, 221, 221)
+
+#define PSC_CPULIST_SHOW true
+#define PSC_CPULIST_CENTER {815, 0}
+#define PSC_CPULIST_SHOW_HEADER true
+#define PSC_CPULIST_NAME "CPU"
+#define PSC_CPULIST_LABEL 0
+#define PSC_CPULIST_VALUE_FMT "%s"
+#define PSC_CPULIST_BAR_VALUE -1
+
+#define PSC_MEMLIST_SHOW true
+#define PSC_MEMLIST_CENTER {1255, 0}
+#define PSC_MEMLIST_SHOW_HEADER true
+#define PSC_MEMLIST_NAME "MEM"
+#define PSC_MEMLIST_LABEL 0
+#define PSC_MEMLIST_VALUE_FMT "%0.s%1.1lf%s"
+#define PSC_MEMLIST_BAR_VALUE -1
