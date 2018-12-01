@@ -90,11 +90,11 @@ GNOME, KDE, XFCE and, probably, some other DE do not display X11 root window as 
 
 For GNOME DE [this script](examples/gnome.sh) may help you.
 
-## Usage on OSX 
+## Usage on macOS
 
 Make sure you've disabled X11 support, by calling `meson configure -Denable-x11=false` before compiling *pscircle*.
 
-As OSX doesn't have linux-compatible procfs, you should supply processes data in our own way via stdin. Input data format should be similar to the output of `ps -e -o pid,ppid,pcpu,rss,comm --no-headers` linux command, e.g: 
+As macOS doesn't have linux-compatible procfs, you should supply processes data in our own way via stdin. Input data format should be similar to the output of `ps -e -o pid,ppid,pcpu,rss,comm --no-headers` linux command, e.g: 
 
 
 ```
