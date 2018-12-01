@@ -94,13 +94,14 @@ For GNOME DE [this script](examples/gnome.sh) may help you.
 
 Make sure you've disabled X11 support, by calling `meson configure -Denable-x11=false` before compiling *pscircle*.
 
-As OSX doesn't have linux-compatible procfs, you should supply processes data in our own way via stdin. Input data format should be similar to the output of `ps -e -o pid,ppid,pcpu,rss,comm --no-headers` linux command, e.g: 
+As OSX doesn't have linux-compatible procfs, you should supply processes data our own way via stdin. Input data format should be similar to the output of `ps -e -o pid,ppid,pcpu,rss,comm --no-headers` linux command, e.g: 
 
 
 ```
     1     0  0.0     4 runit
     2     0  0.0     0 kthreadd
     3     2  0.0     0 rcu_gp
+    ...
 ```
 
 It can be achieved by calling:
