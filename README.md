@@ -110,24 +110,7 @@ It can be achieved by calling:
 ps -e -c -o pid=,ppid=,pcpu=,rss=,comm= | ./pscircle --stdin=true --memlist-show=false --cpulist-show=false
 ```
 
-As a result `pscircle.png` image would be created. Then you should set it is as your wallpaper image.
-
-An example script for setting the wallpaper on macOS looks like this:
-
-```bash
-#!/bin/bash
-cd /path/to/dir/with/pscircle
-while true
-do
-    s=$(uuidgen | tr -d '\n') # create uuid without the new line for gnerating the file name
-    ps -e -c -o pid=,ppid=,pcpu=,rss=,comm= | ./pscircle --stdin=true --memlist-show=false --cpulist-show=false --output=/tmp/temp-wallpaper.png # run the pscircle command as described above
-    mv /tmp/temp-wallpaper.png "/tmp/${s}" # renaming the output to UUID so macOS reconizes it as a new file when you set it as a wallpaper
-    osascript -e 'tell application "System Events" to set picture of every desktop to ("/tmp/'"$s"'" as POSIX file as alias)' # Set the wallpaper with applescript
-    rm /tmp/$s # remove the file to save disk space
-    sleep 15 # sleep for 15 seconds, you can lower this but small numbers result in high CPU usage when setting the wallpaper for some reason
-done
-```
-Then, run that script in the background/at start up.
+As a result `pscircle.png` image would be created. Then you should set it is as your wallpaper image. [An example script for updating wallpaper image.](examples/macos.sh):
 
 # Examples
 
