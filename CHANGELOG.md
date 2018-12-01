@@ -1,3 +1,18 @@
+# 1.3 - 2018.12.01
+
+## Added
+
+* Support for background pattern images
+* Option for displaying root process (`--show-root`)
+* Option for changing label angle of the root noe (`--root-label-angle`)
+* Option for merging the links comming from the root node (`--root-link-sector`)
+* Examples of MacOS
+
+## Updated
+
+* Labels are always drawn on top of the links
+* Fixed systemd service example
+
 # 1.2 - 2018.07.20
 
 ## Added
