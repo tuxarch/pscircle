@@ -27,7 +27,7 @@ pip3 install meson
 sudo apt-get install -y libpng-dev libcairo2-dev libx11-dev
 ```
 
-> In other distributions the process is similar, but the names of the packages may differ
+> In other distributions the process is similar, but the names of the packages may differ. See [Usage on MacOS](#usage-on-macos) for Mac.
 
 To compile and install *pscircle* call:
 
@@ -92,7 +92,24 @@ For GNOME DE [this script](examples/gnome.sh) may help you.
 
 ## Usage on macOS
 
-Make sure you've disabled X11 support, by calling `meson configure -Denable-x11=false` before compiling *pscircle*.
+To install dependencies you will need [Homebrew](https://brew.sh/):
+
+```bash
+# Ninja and Meson build systems
+brew install ninja meson pkg-config
+
+# Dependencies
+brew install libpng cairo libffi
+```
+
+To compile and install *pscircle* with X11 disabled:
+
+```bash
+mkdir build && cd build
+meson .. -Denable-x11=false
+ninja
+ninja install
+```
 
 As macOS doesn't have linux-compatible procfs, you should supply processes data in our own way via stdin. Input data format should be similar to the output of `ps -e -o pid,ppid,pcpu,rss,comm --no-headers` linux command, e.g:
 
@@ -107,7 +124,7 @@ As macOS doesn't have linux-compatible procfs, you should supply processes data 
 It can be achieved by calling:
 
 ```
-ps -e -c -o pid=,ppid=,pcpu=,rss=,comm= | ./pscircle --stdin=true --memlist-show=false --cpulist-show=false
+ps -e -c -o pid=,ppid=,pcpu=,rss=,comm= | pscircle --stdin=true --memlist-show=false --cpulist-show=false
 ```
 
 As a result `pscircle.png` image would be created. Then you should set it is as your wallpaper image. [An example script for updating wallpaper image.](examples/macos.sh)
