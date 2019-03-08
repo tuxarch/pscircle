@@ -1,4 +1,4 @@
-# pscircle 
+# pscircle
 
 **pscircle** visualizes Linux processes in a form of radial tree.
 
@@ -49,7 +49,7 @@ A package is available on the AUR as
 
 ### Gentoo ebuild
 
-Gentoo ebuild is available in [examples/pscircle-9999.ebuild](examples/pscircle-9999.ebuild) 
+Gentoo ebuild is available in [examples/pscircle-9999.ebuild](examples/pscircle-9999.ebuild)
 (by [_ahrs](https://www.reddit.com/r/unixporn/comments/8v9r19/oc_ive_just_created_a_program_for_drawing_process/e1qmuie)).
 
 ## Usage
@@ -105,6 +105,7 @@ brew install libpng cairo libffi
 To compile and install *pscircle* with X11 disabled:
 
 ```bash
+export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
 mkdir build && cd build
 meson .. -Denable-x11=false
 ninja
@@ -163,7 +164,7 @@ For more examples check [examples](examples/) directory.
 
 [source](examples/04-bottom.sh) | [full size](docs/04-bottom.png)
 
-# Rationale 
+# Rationale
 
 ## Graph doesn't fit to my screen
 
@@ -184,7 +185,7 @@ When you compile *pscircle* with `#define PSC_PRINT_TIME 1` cpu time and wall ti
 Execution times of printing the image to X11 root window:
 
 ```
-                  cpu /   wall 
+                  cpu /   wall
          init: 0.0292 / 1.0296 seconds
       arrange: 0.0003 / 0.0003 seconds
     draw tree: 0.0844 / 0.1443 seconds
@@ -196,7 +197,7 @@ Execution times of printing the image to X11 root window:
 Execution times of printing the image to PNG file:
 
 ```
-                  cpu /   wall 
+                  cpu /   wall
          init: 0.0199 / 1.0200 seconds
       arrange: 0.0001 / 0.0001 seconds
     draw tree: 0.1062 / 0.1062 seconds
@@ -205,7 +206,7 @@ Execution times of printing the image to PNG file:
         total: 0.4481 / 1.4483 seconds
 ```
 
-As you can see, drawing the tree to the file (on SSD disk) take almost 4 times longer that printing to X11 screen (0.11 vs 0.45 seconds of cputime). 
+As you can see, drawing the tree to the file (on SSD disk) take almost 4 times longer that printing to X11 screen (0.11 vs 0.45 seconds of cputime).
 
 ## Multiple display environment
 
