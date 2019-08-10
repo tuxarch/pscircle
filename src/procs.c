@@ -300,7 +300,7 @@ collapse_threads_rec(pnode_t *p)
 	FOR_CHILDREN(p)
 		collapse_threads_rec((pnode_t *) n);
 
-	/* +19 to remove 'may be truncated' warnings */
+	/* +19 to remove 'may be truncated' warnings from snprinf */
 	char buf[PSC_MAX_NAME_LENGHT + 19 + 1] = {0};
 
 	FOR_CHILDREN(p) {
@@ -329,7 +329,8 @@ collapse_threads_rec(pnode_t *p)
 			continue;
 
 		snprintf(buf, sizeof(buf) - 1, "%zd * %s", count, pn->name);
-		strncpy(pn->name, buf, PSC_MAX_NAME_LENGHT);
+		memset(pn->name, 0, PSC_MAX_NAME_LENGHT);
+		memcpy(pn->name, buf, PSC_MAX_NAME_LENGHT - 1);
 	}
 }
 

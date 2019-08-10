@@ -3,12 +3,12 @@ project(
 	'c',
 	default_options : [
 		'buildtype=release'
-	]
+	],
+	version: '1.3.1'
 )
 
 config = configuration_data()
-config.set('version', '1.3.0')
-config.set('NDEBUG', not get_option('buildtype').startswith('debug'))
+config.set('version', meson.project_version())
 
 psc_main = [
 	'src/pscircle.c'
@@ -40,32 +40,43 @@ incdir = [
 
 cc = meson.get_compiler('c')
 
-deps = [
-	dependency('cairo'),
-	dependency('libpng'),
-	cc.find_library('m', required : false),
-]
+deps = [  ]
+
+test_flags = [ '-D_GNU_SOURCE=1' ]
+
+if get_option('buildtype') == 'release'
+	test_flags += '-march=native'
+	test_flags += '-ffast-math'
+	test_flags += '-O3'
+	test_flags += '-O4'
+	test_flags += '-DNDEBUG=1'
+elif get_option('buildtype') == 'plain'
+	test_flags += '-DNDEBUG=1'
+elif get_option('buildtype') == 'debug'
+	# asan_dep = cc.find_library('asan', required : false)
+	# if asan_dep.found()
+	# 	deps += asan_dep
+	# 	test_flags += '-fsanitize=address'
+	# 	test_flags += '-fsanitize=leak'
+	# endif
+	test_flags += '-g'
+	test_flags += '-ggdb'
+	test_flags += '-O0'
+endif
+
+deps += dependency('cairo')
+deps += dependency('libpng')
+deps += cc.find_library('m', required : false)
 
 x11_dep = dependency('x11', required : false)
-x11_opt = get_option('enable-x11')
-
-if x11_dep.found() and x11_opt
+if x11_dep.found() and get_option('enable-x11')
 	config.set('HAVE_X11', true)
 	deps += x11_dep
 else
 	config.set('HAVE_X11', false)
 endif
 
-cflags = [
-	'-D_GNU_SOURCE=1'
-]
-
-test_flags = [
-	'-march=native',
-	'-ffast-math',
-	'-Wno-missing-field-initializers',
-	'-Wno-missing-braces'
-]
+cflags = [ ]
 
 foreach flag : test_flags
 	if cc.has_argument(flag)

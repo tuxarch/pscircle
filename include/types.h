@@ -17,8 +17,3 @@ typedef PSC_NODE_COUNT_TYPE nnodes_t;
 
 typedef PSC_MEMORY_UNIT_TYPE memunit_t;
 
-// Some users report assert failures,
-// althought NDEBUG is set in release mode
-#ifndef assert
-#define assert(expr) (void (0))
-#endif
