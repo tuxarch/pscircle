@@ -2,8 +2,6 @@
 
 #define VERSION_STR "@version@"
 
-#mesondefine NDEBUG
-
 #mesondefine HAVE_X11
 
 #mesondefine HAVE_SINCOS

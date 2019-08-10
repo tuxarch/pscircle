@@ -9,7 +9,6 @@ project(
 
 config = configuration_data()
 config.set('version', meson.project_version())
-config.set('NDEBUG', not get_option('buildtype').startswith('debug'))
 
 psc_main = [
 	'src/pscircle.c'
@@ -50,6 +49,9 @@ if get_option('buildtype') == 'release'
 	test_flags += '-ffast-math'
 	test_flags += '-O3'
 	test_flags += '-O4'
+	test_flags += '-DNDEBUG=1'
+elif get_option('buildtype') == 'plain'
+	test_flags += '-DNDEBUG=1'
 elif get_option('buildtype') == 'debug'
 	# asan_dep = cc.find_library('asan', required : false)
 	# if asan_dep.found()
