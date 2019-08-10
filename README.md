@@ -88,7 +88,7 @@ GNOME, KDE, XFCE and, probably, some other DE do not display X11 root window as 
 
 > Hint: you can place the image in `/tmp` directory which is often mapped to the main memory. It omits writing to the disk and improves performance.
 
-For GNOME DE [this script](examples/gnome.sh) may help you.
+For GNOME DE [this script](examples/gnome.sh) may help you, also for KDE check [this script](examples/kde.sh).
 
 ## Usage on macOS
 
