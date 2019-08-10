@@ -39,6 +39,8 @@ public:
 			argv[i] = args[i - 1].c_str();
 
 		argparser_parse(argparser, argc, argv);
+
+		delete []argv;
 	}
 
 	void TearDown() {
@@ -117,6 +119,8 @@ TEST_F(args_test, empry_string) {
 
 	ASSERT_NE(arg1, nullptr);
 	EXPECT_STREQ(arg1, "");
+
+	free(arg1);
 }
 
 TEST_F(args_test, long_key) {
@@ -153,6 +157,11 @@ TEST_F(args_test, multiple_args) {
 	EXPECT_STREQ(arg2, "2");
 	EXPECT_STREQ(arg3, "3");
 	EXPECT_STREQ(arg4, "4");
+
+	free(arg1);
+	free(arg2);
+	free(arg3);
+	free(arg4);
 }
 
 TEST(parser_memory_unit, unknown) {
