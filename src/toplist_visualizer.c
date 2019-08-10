@@ -129,7 +129,8 @@ draw_toplists_header(visualizer_t *vis, toplist_t *cfg, point_t pos)
 	p.x += vis->barw + vis->pad;
 	p.y += ndim.y/2;
 
-	draw_text(vis, cfg->label, p);
+	if (cfg->label)
+		draw_text(vis, cfg->label, p);
 }
 	
 char *
