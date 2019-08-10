@@ -92,8 +92,8 @@ For GNOME DE [this script](examples/gnome.sh) may help you.
 
 For KDE check
 
-* [this script](examples/kde.sh).
-* [Guide at r/kde](https://www.reddit.com/r/kde/comments/asjg1h/a_radial_process_tree_wallpaper/)
+* [this script](examples/kde.sh)
+* [guide at r/kde](https://www.reddit.com/r/kde/comments/asjg1h/a_radial_process_tree_wallpaper/).
 
 ## Usage on macOS
 

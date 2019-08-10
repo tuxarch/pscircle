@@ -1,3 +1,16 @@
+# 1.3.1 - 2019.08.10
+
+## Added
+
+* KDE Example and a link to the guide at reddit
+* native build (-march=native) is now enabled only for realease build mode
+
+## Fixed
+
+* fixed assert() in realease mode
+* fixed assert() when list lablel is empty
+* fixed GCC warnings on string truncation
+
 # 1.3 - 2018.12.01
 
 ## Added
