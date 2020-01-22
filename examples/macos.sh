@@ -3,13 +3,18 @@
 while true
 do
 	# using UUID so macOS reconizes it as a new file when you set it as a wallpaper
-	s=$(uuidgen | tr -d '\n')
+	pic=$(uuidgen | tr -d '\n')
 
-	ps -e -c -o pid=,ppid=,pcpu=,rss=,comm= | pscircle --stdin=true --memlist-show=false --cpulist-show=false --output="/tmp/${s}"
+	ps -e -c -o pid=,ppid=,pcpu=,rss=,comm= | \
+		pscircle --stdin=true \
+				 --memlist-show=false \
+				 --cpulist-show=false \
+				 --output="/tmp/${pic}"
 
-	osascript -e 'tell application "System Events" to set picture of every desktop to ("/tmp/'"$s"'" as POSIX file as alias)'
+	osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/tmp/'"$pic"'" '
 
-	rm /tmp/$s
+	sleep 10
 
-	sleep 15
+	rm /tmp/$pic
+
 done
