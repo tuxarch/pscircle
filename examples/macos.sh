@@ -1,20 +1,22 @@
 #!/bin/bash
 
+picDir=$(find /private/var/folders/ -name com.apple.desktoppicture 2>/dev/null)
+
 while true
 do
-	# using UUID so macOS reconizes it as a new file when you set it as a wallpaper
-	pic=$(uuidgen | tr -d '\n')
+    # using UUID so macOS reconizes it as a new file when you set it as a wallpaper
+    pic=$(uuidgen | tr -d '\n')
 
-	ps -e -c -o pid=,ppid=,pcpu=,rss=,comm= | \
-		pscircle --stdin=true \
-				 --memlist-show=false \
-				 --cpulist-show=false \
-				 --output="/tmp/${pic}"
+    ps -e -c -o pid=,ppid=,pcpu=,rss=,comm= \
+        | pscircle --stdin=true \
+        --memlist-show=false \
+        --cpulist-show=false \
+        --output="/tmp/${pic}"
 
-	osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/tmp/'"$pic"'" '
+    osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/tmp/'"$pic"'" '
 
-	sleep 10
+    sleep 15
 
-	rm /tmp/$pic
+    rm /tmp/$pic $picDir/*.png 2>/dev/null
 
 done
