@@ -21,7 +21,7 @@ In Debian-based distributions you can install them from the repository:
 ```bash
 # Ninja and Meson build systems
 sudo apt-get install -y ninja-build python3-pip python3-setuptools pkg-config
-pip3 install meson
+sudo pip3 install meson
 
 # Dependencies
 sudo apt-get install -y libpng-dev libcairo2-dev libx11-dev
@@ -32,6 +32,8 @@ sudo apt-get install -y libpng-dev libcairo2-dev libx11-dev
 To compile and install *pscircle* call:
 
 ```bash
+git clone git@gitlab.com:mildlyparallel/pscircle.git
+cd pscircle/
 mkdir build && cd build
 meson ..
 ninja
