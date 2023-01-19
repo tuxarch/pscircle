@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <errno.h>
 #include <string.h>
 #include <strings.h>
@@ -18,12 +19,9 @@
 	exit(EXIT_FAILURE); \
 } while (0)
 
-int main(int argc, const char *argv[])
-{
+void gen_image() {
 	timing_t tm = {0};
 	tm_start(&tm);
-
-	parse_cmdline(argc, argv);
 
 	procs_t *procs = calloc(1, sizeof(procs_t));
 	CHECK(procs);
@@ -63,6 +61,20 @@ int main(int argc, const char *argv[])
 	painter_dinit(painter);
 
 	tm_total(&tm);
+}
+
+void loop() {
+	while(true)
+		gen_image();
+}
+
+int main(int argc, const char *argv[])
+{
+	parse_cmdline(argc, argv);
+	if (config.loop_delay > 0)
+		loop();
+	else
+		gen_image();
 
 	return 0;
 }

@@ -32,6 +32,7 @@ cfg_t config = {
 	.background       = PSC_BACKGROUND_COLOR,
 	.background_image = PSC_BACKGROUND_IMAGE,
 	.background_scale = PSC_BACKGROUND_IMAGE_SCALE,
+	.loop_delay       = PSC_LOOP_DELAY,
 
 	.max_mem = PSC_MEM_MAX,
 	.min_mem = PSC_MEM_MIN,
@@ -130,6 +131,9 @@ parse_cmdline(int argc, char const * argv[])
 		"from system start time and proceess start time. Otherwise, these values will be calculated "
 		"over specified interval (in seconds, with fractions). This also implies that program exection "
 		"will be suspended to the specified interval.");
+	ARGQ(&argp, "--loop-delay", config.loop_delay, parser_real, PSC_LOOP_DELAY,
+		"Delay in seconds between 2 images generations. "
+		"Default to 0 (no loop)");
 #ifdef HAVE_X11
 	ARG(&argp, "--output", config.output, parser_string, PSC_OUTPUT,
 		"Path to the output image. If it's not set, X11 root window is used");
