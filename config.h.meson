@@ -30,7 +30,7 @@
 #define PSC_POINT_BUFSIZE 20
 #define PSC_REALS_COUNT 20
 #define PSC_DAEMONIZE false
-#define PSC_LOOP_DELAY 0.5
+#define PSC_LOOP_DELAY 1
 
 // Can be changed via command line arguments
 
