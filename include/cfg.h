@@ -97,6 +97,7 @@ typedef struct {
 	const char *background_image;
 	real_t background_scale;
 	real_t loop_delay;
+	bool daemonize;
 
 	tree_t tree;
 	dot_t dot;

@@ -29,6 +29,7 @@
 #define PSC_COLOR_BUFSIZE 10
 #define PSC_POINT_BUFSIZE 20
 #define PSC_REALS_COUNT 20
+#define PSC_DAEMONIZE false
 #define PSC_LOOP_DELAY 0
 
 // Can be changed via command line arguments

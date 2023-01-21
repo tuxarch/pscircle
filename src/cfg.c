@@ -32,6 +32,7 @@ cfg_t config = {
 	.background       = PSC_BACKGROUND_COLOR,
 	.background_image = PSC_BACKGROUND_IMAGE,
 	.background_scale = PSC_BACKGROUND_IMAGE_SCALE,
+	.daemonize        = PSC_DAEMONIZE,
 	.loop_delay       = PSC_LOOP_DELAY,
 
 	.max_mem = PSC_MEM_MAX,
@@ -129,11 +130,12 @@ parse_cmdline(int argc, char const * argv[])
 	ARGQ(&argp, "--interval", config.interval, parser_real, PSC_INTERVAL,
 		"If set to 0 (default), CPU utilization and processes PCPU values will be calculate "
 		"from system start time and proceess start time. Otherwise, these values will be calculated "
-		"over specified interval (in seconds, with fractions). This also implies that program exection "
+		"over specified interval (in seconds, with fractions). This also implies that program execution "
 		"will be suspended to the specified interval.");
+	ARGQ(&argp, "--daemonize", config.daemonize, parser_bool, PSC_DAEMONIZE,
+		"Run pscircle in background as daemon. Delay between image generation is set with the --loop_delay option.");
 	ARGQ(&argp, "--loop-delay", config.loop_delay, parser_real, PSC_LOOP_DELAY,
-		"Delay in seconds between 2 images generations. "
-		"Default to 0 (no loop)");
+		"Delay in seconds between 2 images generations. Useful only with --daemonize option");
 #ifdef HAVE_X11
 	ARG(&argp, "--output", config.output, parser_string, PSC_OUTPUT,
 		"Path to the output image. If it's not set, X11 root window is used");
