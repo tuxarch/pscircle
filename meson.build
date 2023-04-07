@@ -4,7 +4,7 @@ project(
 	default_options : [
 		'buildtype=release'
 	],
-	version: '1.3.1'
+	version: '1.4.0'
 )
 
 config = configuration_data()
