@@ -65,6 +65,15 @@ systemctl --user enable pscircle
 systemctl --user start pscircle
 ```
 
+Non systemd based Linux distributions and BSD systems:
+
+```bash
+mkdir -p ~/.config/services/
+cp examples/rc.pscircle.sh ~/.config/services/
+~/.config/services/rc.pscircle.sh start
+```
+
+
 To view complete list of command line arguments run:
 
 ```bash
